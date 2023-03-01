@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+        </Console>
+    </appenders>
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="ConsoleAppender"/>
+        </root>
+    </loggers>
+</configuration>
+
