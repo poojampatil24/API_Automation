@@ -2,11 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name="org.API.Listener.TestListener"/>
+        <listener class-name="org.APIClient.Listener.TestListener"/>
     </listeners>
     <test name="C:\Users\Pooja.P\IdeaProjects\API_Automation_Assignment\src">
         <classes>
-            <class name="PracticeTestCases.HerokuAPP_Test">
+            <class name="TestCases.HerokuAPP_Test">
             </class>
         </classes>
     </test>
