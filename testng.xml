@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name="org.APIClient.Listener.TestListener"/>
+        <listener class-name="org.Samples.Listener.TestListener"/>
     </listeners>
     <test name="C:\Users\Pooja.P\IdeaProjects\API_Automation_Assignment\src">
         <classes>

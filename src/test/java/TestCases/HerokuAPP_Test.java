@@ -1,17 +1,17 @@
 package TestCases;
 
 import io.restassured.response.Response;
-import org.APIClient.Utilities.CommonFunctions;
-import org.APIClient.Utilities.ExcelDataConfig;
-import org.APIClient.BaseConfiguration.TestConfig;
-import org.APIClient.API.HerokuApp;
+import org.Samples.Utilities.CommonFunctions;
+import org.Samples.Utilities.ExcelDataConfig;
+import org.Samples.BaseConfiguration.BaseConfig;
+import org.Samples.API.HerokuApp;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class HerokuAPP_Test extends TestConfig {
+public class HerokuAPP_Test extends BaseConfig {
 
     public File jsonFile;
     public HashMap<String, String> authData;
@@ -19,25 +19,29 @@ public class HerokuAPP_Test extends TestConfig {
     public HashMap<String, String> testData;
     @Test
     public void TestCase1() throws IOException{
+
+        CommonFunctions commonFunctions = new CommonFunctions();
+        ExcelDataConfig excelDataConfig = new ExcelDataConfig();
+
         /******** Random data generator to create a request body ********/
-        String firstName = CommonFunctions.getRandomFirstName();
-        String lastName = CommonFunctions.getRandomLastName();
-        int totalPrice = CommonFunctions.getRandomTotalPrice();
-        boolean depositPaid = CommonFunctions.getRandomDepositPaid();
-        String checkin = CommonFunctions.getRandomDate();
-        String checkout =  CommonFunctions.getRandomDate();
-        String additionalNeeds = CommonFunctions.getRandomAdditionalNeeds();
+        String firstName = commonFunctions.getRandomFirstName();
+        String lastName = commonFunctions.getRandomLastName();
+        int totalPrice = commonFunctions.getRandomTotalPrice();
+        boolean depositPaid = commonFunctions.getRandomDepositPaid();
+        String checkin = commonFunctions.getRandomDate();
+        String checkout =  commonFunctions.getRandomDate();
+        String additionalNeeds = commonFunctions.getRandomAdditionalNeeds();
 
 
         /******** Data Files ********/
-        jsonFile = CommonFunctions.getJsonFile("BookingPayload");
-        authData = ExcelDataConfig.getData("BaseData", "BasicConfigData");
-        endPointData = ExcelDataConfig.getData("BaseData", "EndPointData");
-        testData = ExcelDataConfig.getData("TestData", "HerokuApp_Test1");
+        jsonFile = commonFunctions.getJsonFile("BookingPayload");
+        authData = excelDataConfig.getData("BaseData", "BasicConfigData");
+        endPointData = excelDataConfig.getData("BaseData", "EndPointData");
+        testData = excelDataConfig.getData("TestData", "HerokuApp_Test1");
 
 
         /******** Get Booking Json Payload *********/
-        String jsonString = CommonFunctions.getJsonPayload(jsonFile,testData.get("firstnameLabel"),firstName,testData.get("lastnameLabel"),lastName,testData.get("totalpriceLabel"),totalPrice,testData.get("depositpaidLabel"),depositPaid,testData.get("bookingdatesLabel"),testData.get("checkinLabel"),checkin,testData.get("checkoutLabel"),checkout,testData.get("additionalneedsLabel"),additionalNeeds);
+        String jsonString = commonFunctions.getJsonPayload(jsonFile,testData.get("firstnameLabel"),firstName,testData.get("lastnameLabel"),lastName,testData.get("totalpriceLabel"),totalPrice,testData.get("depositpaidLabel"),depositPaid,testData.get("bookingdatesLabel"),testData.get("checkinLabel"),checkin,testData.get("checkoutLabel"),checkout,testData.get("additionalneedsLabel"),additionalNeeds);
 
 
         /******** Start Test Case *********/
@@ -50,5 +54,4 @@ public class HerokuAPP_Test extends TestConfig {
         /******** End Test Case *********/
 
     }
-
 }
